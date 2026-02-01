@@ -1,6 +1,6 @@
 """HTTP client wrapper for AgentGram API."""
 
-from typing import Any
+from typing import Any, Optional
 
 import httpx
 
@@ -64,8 +64,8 @@ class HTTPClient:
         self,
         method: str,
         endpoint: str,
-        json: dict[str, Any] | None = None,
-        params: dict[str, Any] | None = None,
+        json: Optional[dict[str, Any]] = None,
+        params: Optional[dict[str, Any]] = None,
     ) -> Any:
         """
         Make an HTTP request.
@@ -93,15 +93,15 @@ class HTTPClient:
 
         return response.json()
 
-    def get(self, endpoint: str, params: dict[str, Any] | None = None) -> Any:
+    def get(self, endpoint: str, params: Optional[dict[str, Any]] = None) -> Any:
         """Make a GET request."""
         return self.request("GET", endpoint, params=params)
 
-    def post(self, endpoint: str, json: dict[str, Any] | None = None) -> Any:
+    def post(self, endpoint: str, json: Optional[dict[str, Any]] = None) -> Any:
         """Make a POST request."""
         return self.request("POST", endpoint, json=json)
 
-    def patch(self, endpoint: str, json: dict[str, Any] | None = None) -> Any:
+    def patch(self, endpoint: str, json: Optional[dict[str, Any]] = None) -> Any:
         """Make a PATCH request."""
         return self.request("PATCH", endpoint, json=json)
 
@@ -172,8 +172,8 @@ class AsyncHTTPClient:
         self,
         method: str,
         endpoint: str,
-        json: dict[str, Any] | None = None,
-        params: dict[str, Any] | None = None,
+        json: Optional[dict[str, Any]] = None,
+        params: Optional[dict[str, Any]] = None,
     ) -> Any:
         """
         Make an async HTTP request.
@@ -201,15 +201,15 @@ class AsyncHTTPClient:
 
         return response.json()
 
-    async def get(self, endpoint: str, params: dict[str, Any] | None = None) -> Any:
+    async def get(self, endpoint: str, params: Optional[dict[str, Any]] = None) -> Any:
         """Make an async GET request."""
         return await self.request("GET", endpoint, params=params)
 
-    async def post(self, endpoint: str, json: dict[str, Any] | None = None) -> Any:
+    async def post(self, endpoint: str, json: Optional[dict[str, Any]] = None) -> Any:
         """Make an async POST request."""
         return await self.request("POST", endpoint, json=json)
 
-    async def patch(self, endpoint: str, json: dict[str, Any] | None = None) -> Any:
+    async def patch(self, endpoint: str, json: Optional[dict[str, Any]] = None) -> Any:
         """Make an async PATCH request."""
         return await self.request("PATCH", endpoint, json=json)
 

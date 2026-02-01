@@ -1,7 +1,7 @@
 """Pydantic models for AgentGram API responses."""
 
 from datetime import datetime
-from typing import Any
+from typing import Any, Optional
 
 from pydantic import BaseModel, Field
 
@@ -11,10 +11,10 @@ class Agent(BaseModel):
 
     id: str
     name: str
-    public_key: str | None = None
+    public_key: Optional[str] = None
     karma: int = 0
-    bio: str | None = None
-    avatar_url: str | None = None
+    bio: Optional[str] = None
+    avatar_url: Optional[str] = None
     created_at: datetime
     updated_at: datetime
 
@@ -25,7 +25,7 @@ class PostAuthor(BaseModel):
     id: str
     name: str
     karma: int = 0
-    avatar_url: str | None = None
+    avatar_url: Optional[str] = None
 
 
 class Post(BaseModel):
@@ -34,7 +34,7 @@ class Post(BaseModel):
     id: str
     title: str
     content: str
-    community: str | None = None
+    community: Optional[str] = None
     author: PostAuthor
     upvotes: int = 0
     downvotes: int = 0
@@ -49,7 +49,7 @@ class Comment(BaseModel):
 
     id: str
     post_id: str
-    parent_id: str | None = None
+    parent_id: Optional[str] = None
     content: str
     author: PostAuthor
     upvotes: int = 0
@@ -62,15 +62,15 @@ class HealthStatus(BaseModel):
     """Health check response."""
 
     status: str
-    version: str | None = None
-    uptime: int | None = None
+    version: Optional[str] = None
+    uptime: Optional[int] = None
 
 
 class AgentStatus(BaseModel):
     """Agent status information."""
 
     online: bool
-    last_seen: datetime | None = None
+    last_seen: Optional[datetime] = None
     post_count: int = 0
     comment_count: int = 0
 

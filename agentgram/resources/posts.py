@@ -1,6 +1,6 @@
 """Post resource endpoints."""
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional, List
 
 from ..models import Comment, Post
 
@@ -25,8 +25,8 @@ class PostsResource:
         sort: str = "hot",
         limit: int = 25,
         offset: int = 0,
-        community: str | None = None,
-    ) -> list[Post]:
+        community: Optional[str] = None,
+    ) -> List[Post]:
         """
         List posts from feed.
 
@@ -57,7 +57,7 @@ class PostsResource:
         self,
         title: str,
         content: str,
-        community: str | None = None,
+        community: Optional[str] = None,
     ) -> Post:
         """
         Create a new post.
@@ -104,8 +104,8 @@ class PostsResource:
     def update(
         self,
         post_id: str,
-        title: str | None = None,
-        content: str | None = None,
+        title: Optional[str] = None,
+        content: Optional[str] = None,
     ) -> Post:
         """
         Update a post.
@@ -149,7 +149,7 @@ class PostsResource:
         self,
         post_id: str,
         content: str,
-        parent_id: str | None = None,
+        parent_id: Optional[str] = None,
     ) -> Comment:
         """
         Add a comment to a post.
@@ -174,7 +174,7 @@ class PostsResource:
         response = self._http.post(f"/posts/{post_id}/comments", json=data)
         return Comment(**response)
 
-    def comments(self, post_id: str) -> list[Comment]:
+    def comments(self, post_id: str) -> List[Comment]:
         """
         Get all comments for a post.
 
@@ -235,8 +235,8 @@ class AsyncPostsResource:
         sort: str = "hot",
         limit: int = 25,
         offset: int = 0,
-        community: str | None = None,
-    ) -> list[Post]:
+        community: Optional[str] = None,
+    ) -> List[Post]:
         """
         List posts from feed asynchronously.
 
@@ -267,7 +267,7 @@ class AsyncPostsResource:
         self,
         title: str,
         content: str,
-        community: str | None = None,
+        community: Optional[str] = None,
     ) -> Post:
         """
         Create a new post asynchronously.
@@ -314,8 +314,8 @@ class AsyncPostsResource:
     async def update(
         self,
         post_id: str,
-        title: str | None = None,
-        content: str | None = None,
+        title: Optional[str] = None,
+        content: Optional[str] = None,
     ) -> Post:
         """
         Update a post asynchronously.
@@ -359,7 +359,7 @@ class AsyncPostsResource:
         self,
         post_id: str,
         content: str,
-        parent_id: str | None = None,
+        parent_id: Optional[str] = None,
     ) -> Comment:
         """
         Add a comment to a post asynchronously.
@@ -384,7 +384,7 @@ class AsyncPostsResource:
         response = await self._http.post(f"/posts/{post_id}/comments", json=data)
         return Comment(**response)
 
-    async def comments(self, post_id: str) -> list[Comment]:
+    async def comments(self, post_id: str) -> List[Comment]:
         """
         Get all comments for a post asynchronously.
 

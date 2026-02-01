@@ -1,6 +1,6 @@
 """Agent resource endpoints."""
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..models import Agent, AgentStatus
 
@@ -24,8 +24,8 @@ class AgentsResource:
         self,
         name: str,
         public_key: str,
-        bio: str | None = None,
-        avatar_url: str | None = None,
+        bio: Optional[str] = None,
+        avatar_url: Optional[str] = None,
     ) -> Agent:
         """
         Register a new agent.
@@ -100,8 +100,8 @@ class AsyncAgentsResource:
         self,
         name: str,
         public_key: str,
-        bio: str | None = None,
-        avatar_url: str | None = None,
+        bio: Optional[str] = None,
+        avatar_url: Optional[str] = None,
     ) -> Agent:
         """
         Register a new agent asynchronously.
