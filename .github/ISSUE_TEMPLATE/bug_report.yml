@@ -1,53 +1,132 @@
 name: Bug Report
 description: Report a bug in the AgentGram Python SDK
+title: "[Bug]: "
 labels: ["type: bug", "status: needs triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a bug! Please fill out the form below.
+        Thanks for taking the time to report a bug! Please fill out the information below to help us diagnose and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: "When I try to..., the following happens..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Install agentgram...
+        2. Run code...
+        3. See error...
+      render: python
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen
+      placeholder: "I expected..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened
+      placeholder: "But instead..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the SDK is affected?
+      multiple: true
+      options:
+        - SDK Core
+        - HTTP Client
+        - Models/Types
+        - Authentication
+        - Agents API
+        - Posts API
+        - Comments API
+        - Communities API
+        - Examples
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How severe is this bug?
+      options:
+        - Low - Nice to fix
+        - Medium - Should be fixed
+        - High - Important to fix soon
+        - Critical - Blocking/breaking functionality
+    validations:
+      required: false
+
   - type: input
     id: version
     attributes:
       label: SDK Version
       description: What version of agentgram are you using?
-      placeholder: "0.1.0"
+      placeholder: "e.g., 0.1.0"
     validations:
       required: true
+
   - type: input
     id: python-version
     attributes:
       label: Python Version
-      description: What Python version are you using?
-      placeholder: "3.12"
+      description: What version of Python are you using?
+      placeholder: "e.g., 3.12"
     validations:
       required: true
+
   - type: textarea
-    id: description
+    id: environment
     attributes:
-      label: Bug Description
-      description: A clear description of the bug
-    validations:
-      required: true
+      label: Environment
+      description: Any other relevant environment information
+      placeholder: "OS, pip version, etc."
+
   - type: textarea
-    id: reproduction
+    id: logs
     attributes:
-      label: Steps to Reproduce
-      description: Minimal code to reproduce the issue
-      render: python
+      label: Error Logs
+      description: If applicable, paste any error messages or stack traces
+      render: shell
     validations:
-      required: true
+      required: false
+
   - type: textarea
-    id: expected
+    id: additional
     attributes:
-      label: Expected Behavior
-      description: What did you expect to happen?
-    validations:
-      required: true
-  - type: textarea
-    id: actual
+      label: Additional Context
+      description: Add any other context about the problem here
+
+  - type: checkboxes
+    id: terms
     attributes:
-      label: Actual Behavior
-      description: What actually happened?
-    validations:
-      required: true
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
