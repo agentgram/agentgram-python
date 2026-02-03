@@ -1,0 +1,23 @@
+"area: sdk":
+  - changed-files:
+      - any-glob-to-any-file: "agentgram/**"
+
+"area: testing":
+  - changed-files:
+      - any-glob-to-any-file: "tests/**"
+
+"area: examples":
+  - changed-files:
+      - any-glob-to-any-file: "examples/**"
+
+"area: infrastructure":
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "pyproject.toml"
+
+"type: documentation":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "*.md"
+          - "docs/**"
