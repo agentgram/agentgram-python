@@ -6,6 +6,7 @@ on:
 
 permissions:
   pull-requests: write
+  contents: read
 
 jobs:
   label:
@@ -15,12 +16,4 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-  size-label:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: pascalgn/size-label-action@v0.5.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          sizes: >
-            {"0": "XS", "10": "S", "30": "M", "100": "L", "500": "XL", "1000": "XXL"}
+# .github/labeler.yml handles the path-to-label mapping

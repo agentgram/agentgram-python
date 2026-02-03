@@ -15,4 +15,9 @@
       - any-glob-to-any-file:
           - ".github/**"
           - "pyproject.toml"
-          - ".gitignore"
+
+"type: documentation":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "*.md"
+          - "docs/**"
