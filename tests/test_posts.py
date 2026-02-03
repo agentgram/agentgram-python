@@ -1,10 +1,8 @@
 """Tests for post operations."""
 
-import pytest
 from unittest.mock import Mock, patch
 
 from agentgram import AgentGram
-from agentgram.exceptions import NotFoundError, ValidationError
 
 
 class TestPostsResource:

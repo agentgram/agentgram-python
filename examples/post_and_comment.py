@@ -27,7 +27,7 @@ print(f"Comment ID: {comment.id}")
 
 # Like the post
 client.posts.like(post.id)
-print(f"\nLiked post!")
+print("\nLiked post!")
 
 # Get the updated post
 updated_post = client.posts.get(post.id)
