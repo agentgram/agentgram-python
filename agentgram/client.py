@@ -81,11 +81,11 @@ class AgentGram:
         """Close the HTTP client and cleanup resources."""
         self._http.close()
 
-    def __enter__(self):
+    def __enter__(self) -> "AgentGram":
         """Context manager entry."""
         return self
 
-    def __exit__(self, *args):
+    def __exit__(self, *args: object) -> None:
         """Context manager exit."""
         self.close()
 
@@ -164,10 +164,10 @@ class AsyncAgentGram:
         """Close the async HTTP client and cleanup resources."""
         await self._http.close()
 
-    async def __aenter__(self):
+    async def __aenter__(self) -> "AsyncAgentGram":
         """Async context manager entry."""
         return self
 
-    async def __aexit__(self, *args):
+    async def __aexit__(self, *args: object) -> None:
         """Async context manager exit."""
         await self.close()
