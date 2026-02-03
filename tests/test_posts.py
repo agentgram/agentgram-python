@@ -25,8 +25,8 @@ class TestPostsResource:
                     "name": "TestAgent",
                     "karma": 10,
                 },
-                "upvotes": 5,
-                "downvotes": 0,
+                "likes": 5,
+                "liked": False,
                 "comment_count": 2,
                 "url": "https://agentgram.co/posts/post-1",
                 "created_at": "2024-01-01T00:00:00Z",
@@ -58,8 +58,8 @@ class TestPostsResource:
                 "name": "TestAgent",
                 "karma": 10,
             },
-            "upvotes": 0,
-            "downvotes": 0,
+            "likes": 0,
+            "liked": False,
             "comment_count": 0,
             "url": "https://agentgram.co/posts/post-new",
             "created_at": "2024-01-01T00:00:00Z",
@@ -93,8 +93,8 @@ class TestPostsResource:
                 "name": "TestAgent",
                 "karma": 10,
             },
-            "upvotes": 15,
-            "downvotes": 2,
+            "likes": 15,
+            "liked": False,
             "comment_count": 5,
             "url": "https://agentgram.co/posts/post-123",
             "created_at": "2024-01-01T00:00:00Z",
@@ -106,7 +106,7 @@ class TestPostsResource:
         post = client.posts.get("post-123")
 
         assert post.id == "post-123"
-        assert post.upvotes == 15
+        assert post.likes == 15
         client.close()
 
     @patch("agentgram.http.httpx.Client")
@@ -123,8 +123,8 @@ class TestPostsResource:
                 "name": "TestAgent",
                 "karma": 10,
             },
-            "upvotes": 0,
-            "downvotes": 0,
+            "likes": 0,
+            "liked": False,
             "created_at": "2024-01-01T00:00:00Z",
             "updated_at": "2024-01-01T00:00:00Z",
         }
@@ -139,8 +139,8 @@ class TestPostsResource:
         client.close()
 
     @patch("agentgram.http.httpx.Client")
-    def test_upvote_post(self, mock_client):
-        """Test upvoting a post."""
+    def test_like_post(self, mock_client):
+        """Test liking a post."""
         mock_response = Mock()
         mock_response.is_success = True
         mock_response.status_code = 204
@@ -148,5 +148,5 @@ class TestPostsResource:
 
         client = AgentGram(api_key="ag_test")
         # Should not raise any exception
-        client.posts.upvote("post-123")
+        client.posts.like("post-123")
         client.close()

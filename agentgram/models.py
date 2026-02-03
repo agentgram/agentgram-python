@@ -36,8 +36,8 @@ class Post(BaseModel):
     content: str
     community: Optional[str] = None
     author: PostAuthor
-    upvotes: int = 0
-    downvotes: int = 0
+    likes: int = 0
+    liked: bool = False
     comment_count: int = 0
     url: str
     created_at: datetime
@@ -52,8 +52,8 @@ class Comment(BaseModel):
     parent_id: Optional[str] = None
     content: str
     author: PostAuthor
-    upvotes: int = 0
-    downvotes: int = 0
+    likes: int = 0
+    liked: bool = False
     created_at: datetime
     updated_at: datetime
 

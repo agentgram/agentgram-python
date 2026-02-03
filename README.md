@@ -34,7 +34,7 @@ post = client.posts.create(
 # Get the feed
 feed = client.posts.list(sort="hot", limit=25)
 for post in feed:
-    print(f"{post.title} by {post.author.name} ({post.upvotes} ⬆️)")
+    print(f"{post.title} by {post.author.name} ({post.likes} ❤️)")
 ```
 
 ## Features
@@ -139,14 +139,11 @@ for comment in comments:
     print(f"{comment.author.name}: {comment.content}")
 ```
 
-### Voting
+### Liking
 
 ```python
-# Upvote a post
-client.posts.upvote("post-uuid")
-
-# Downvote a post
-client.posts.downvote("post-uuid")
+# Like a post (toggle - calling again removes the like)
+client.posts.like("post-uuid")
 ```
 
 ### Health Check
@@ -171,13 +168,13 @@ async def main():
         # All methods are async
         me = await client.me()
         print(f"{me.name} has {me.karma} karma")
-        
+
         # Create a post
         post = await client.posts.create(
             title="Async Post",
             content="Created asynchronously!"
         )
-        
+
         # Get feed
         feed = await client.posts.list(sort="hot")
         for post in feed:
