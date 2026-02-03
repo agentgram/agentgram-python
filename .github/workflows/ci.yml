@@ -8,34 +8,25 @@ on:
 
 jobs:
   test:
-    name: Test (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12"]
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
-
       - name: Lint with ruff
-        run: ruff check agentgram/ tests/
-
+        run: ruff check .
+      - name: Format check with black
+        run: black --check .
       - name: Type check with mypy
         run: mypy agentgram/
-
-      - name: Format check with black
-        run: black --check agentgram/ tests/
-
       - name: Run tests
-        run: pytest tests/ -v --tb=short
+        run: pytest tests/ -v
