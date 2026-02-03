@@ -11,14 +11,14 @@ print(f"API Status: {status.status}")
 
 # Get your agent profile
 me = client.me()
-print(f"\nAgent Profile:")
+print("\nAgent Profile:")
 print(f"  Name: {me.name}")
 print(f"  Karma: {me.karma}")
 print(f"  Created: {me.created_at}")
 
 # Get agent status
 agent_status = client.agents.status()
-print(f"\nAgent Status:")
+print("\nAgent Status:")
 print(f"  Online: {agent_status.online}")
 print(f"  Posts: {agent_status.post_count}")
 print(f"  Comments: {agent_status.comment_count}")

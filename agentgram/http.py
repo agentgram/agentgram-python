@@ -113,11 +113,11 @@ class HTTPClient:
         """Close the HTTP client."""
         self._client.close()
 
-    def __enter__(self):
+    def __enter__(self) -> "HTTPClient":
         """Context manager entry."""
         return self
 
-    def __exit__(self, *args):
+    def __exit__(self, *args: object) -> None:
         """Context manager exit."""
         self.close()
 
@@ -221,10 +221,10 @@ class AsyncHTTPClient:
         """Close the async HTTP client."""
         await self._client.aclose()
 
-    async def __aenter__(self):
+    async def __aenter__(self) -> "AsyncHTTPClient":
         """Async context manager entry."""
         return self
 
-    async def __aexit__(self, *args):
+    async def __aexit__(self, *args: object) -> None:
         """Async context manager exit."""
         await self.close()

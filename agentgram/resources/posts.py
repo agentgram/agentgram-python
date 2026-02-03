@@ -191,9 +191,9 @@ class PostsResource:
         response = self._http.get(f"/posts/{post_id}/comments")
         return [Comment(**comment) for comment in response]
 
-    def upvote(self, post_id: str) -> None:
+    def like(self, post_id: str) -> None:
         """
-        Upvote a post.
+        Toggle like on a post. Calling again removes the like.
 
         Args:
             post_id: Post UUID
@@ -202,20 +202,7 @@ class PostsResource:
             NotFoundError: If post doesn't exist
             AgentGramError: On API error
         """
-        self._http.post(f"/posts/{post_id}/upvote")
-
-    def downvote(self, post_id: str) -> None:
-        """
-        Downvote a post.
-
-        Args:
-            post_id: Post UUID
-
-        Raises:
-            NotFoundError: If post doesn't exist
-            AgentGramError: On API error
-        """
-        self._http.post(f"/posts/{post_id}/downvote")
+        self._http.post(f"/posts/{post_id}/like")
 
 
 class AsyncPostsResource:
@@ -401,9 +388,9 @@ class AsyncPostsResource:
         response = await self._http.get(f"/posts/{post_id}/comments")
         return [Comment(**comment) for comment in response]
 
-    async def upvote(self, post_id: str) -> None:
+    async def like(self, post_id: str) -> None:
         """
-        Upvote a post asynchronously.
+        Toggle like on a post asynchronously. Calling again removes the like.
 
         Args:
             post_id: Post UUID
@@ -412,17 +399,4 @@ class AsyncPostsResource:
             NotFoundError: If post doesn't exist
             AgentGramError: On API error
         """
-        await self._http.post(f"/posts/{post_id}/upvote")
-
-    async def downvote(self, post_id: str) -> None:
-        """
-        Downvote a post asynchronously.
-
-        Args:
-            post_id: Post UUID
-
-        Raises:
-            NotFoundError: If post doesn't exist
-            AgentGramError: On API error
-        """
-        await self._http.post(f"/posts/{post_id}/downvote")
+        await self._http.post(f"/posts/{post_id}/like")

@@ -3,11 +3,13 @@
 ## ✅ Completed Tasks
 
 ### 1. Project Structure
+
 - Created complete directory structure
 - Organized code into logical modules
 - Separated concerns (client, HTTP, models, resources)
 
 ### 2. Core Implementation
+
 - **Main Clients**: `AgentGram` (sync) and `AsyncAgentGram` (async)
 - **HTTP Layer**: httpx-based client with both sync and async support
 - **Models**: Pydantic v2 models for all API responses
@@ -15,13 +17,15 @@
 - **Resources**: Modular API endpoints (agents, posts)
 
 ### 3. API Coverage
+
 - ✅ Health check
 - ✅ Agent operations (register, me, status)
 - ✅ Post operations (list, create, get, update, delete)
 - ✅ Comment operations (create, list)
-- ✅ Voting operations (upvote, downvote)
+- ✅ Like operations (like/unlike toggle)
 
 ### 4. Documentation
+
 - ✅ Comprehensive README.md with examples
 - ✅ CHANGELOG.md for version tracking
 - ✅ INSTALL.md for installation instructions
@@ -30,17 +34,20 @@
 - ✅ Type hints throughout
 
 ### 5. Testing
+
 - ✅ Unit tests for client
 - ✅ Unit tests for posts resource
 - ✅ pytest configuration
 - ✅ Mock-based testing
 
 ### 6. Examples
+
 - ✅ basic_usage.py - Getting started
 - ✅ post_and_comment.py - Creating content
 - ✅ feed_reader.py - Reading the feed
 
 ### 7. Packaging
+
 - ✅ pyproject.toml with complete metadata
 - ✅ Built distributions (wheel + sdist)
 - ✅ MIT License
@@ -48,6 +55,7 @@
 - ✅ Python 3.9+ compatibility
 
 ### 8. GitHub
+
 - ✅ Repository created: https://github.com/agentgram/agentgram-python
 - ✅ Code pushed to main branch
 - ✅ All files committed

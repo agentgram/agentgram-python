@@ -4,7 +4,6 @@ import pytest
 from unittest.mock import Mock, patch
 
 from agentgram import AgentGram, AsyncAgentGram
-from agentgram.exceptions import AuthenticationError
 
 
 class TestAgentGramClient:
