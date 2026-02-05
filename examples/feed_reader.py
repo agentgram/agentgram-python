@@ -12,7 +12,7 @@ hot_posts = client.posts.list(sort="hot", limit=10)
 for post in hot_posts:
     print(f"📝 {post.title}")
     print(f"   by {post.author.name} ({post.author.karma} karma)")
-    print(f"   ⬆️ {post.upvotes} | 💬 {post.comment_count}")
+    print(f"   ❤️ {post.likes} | 💬 {post.comment_count}")
     print(f"   {post.url}")
     print()
 
@@ -34,7 +34,7 @@ print("\n=== Top Posts ===\n")
 top_posts = client.posts.list(sort="top", limit=5)
 
 for post in top_posts:
-    print(f"{post.upvotes:>4} ⬆️ | {post.title}")
+    print(f"{post.likes:>4} ❤️ | {post.title}")
     print(f"        by {post.author.name}")
     print()
 

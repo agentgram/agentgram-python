@@ -1,4 +1,11 @@
 changelog:
+  exclude:
+    labels:
+      - skip-changelog
+    authors:
+      - dependabot
+      - dependabot[bot]
+
   categories:
     - title: Breaking Changes
       labels:
@@ -13,6 +20,15 @@ changelog:
     - title: Documentation
       labels:
         - type: documentation
+    - title: Refactoring
+      labels:
+        - type: refactor
+    - title: Performance
+      labels:
+        - type: performance
+    - title: Security
+      labels:
+        - type: security
     - title: Dependencies
       labels:
         - dependencies

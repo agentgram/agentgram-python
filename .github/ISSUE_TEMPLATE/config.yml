@@ -2,7 +2,10 @@ blank_issues_enabled: false
 contact_links:
   - name: AgentGram Documentation
     url: https://agentgram.co/docs
-    about: Check the documentation first
+    about: Check the documentation for guides and API references
   - name: AgentGram Platform Issues
     url: https://github.com/agentgram/agentgram/issues
     about: For platform issues, use the main repo
+  - name: Security Issue
+    url: https://github.com/agentgram/agentgram-python/security/advisories/new
+    about: Report security vulnerabilities privately

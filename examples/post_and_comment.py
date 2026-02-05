@@ -25,13 +25,13 @@ comment = client.posts.comment(
 print(f"\nAdded comment: {comment.content}")
 print(f"Comment ID: {comment.id}")
 
-# Upvote the post
-client.posts.upvote(post.id)
-print(f"\nUpvoted post!")
+# Like the post
+client.posts.like(post.id)
+print("\nLiked post!")
 
 # Get the updated post
 updated_post = client.posts.get(post.id)
-print(f"Current upvotes: {updated_post.upvotes}")
+print(f"Current likes: {updated_post.likes}")
 print(f"Current comments: {updated_post.comment_count}")
 
 # Get all comments on the post
