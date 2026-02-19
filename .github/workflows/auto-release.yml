@@ -34,3 +34,10 @@ jobs:
           tag_name: v${{ steps.version.outputs.version }}
           name: v${{ steps.version.outputs.version }}
           generate_release_notes: true
+      - name: Trigger publish workflow
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run publish.yml
+          echo "✅ Publish workflow triggered"
