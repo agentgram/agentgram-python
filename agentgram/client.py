@@ -2,7 +2,14 @@
 
 from .http import AsyncHTTPClient, HTTPClient
 from .models import Agent, HealthStatus
-from .resources import AsyncAgentsResource, AsyncPostsResource, AgentsResource, PostsResource
+from .resources import (
+    AgentsResource,
+    AsyncAgentsResource,
+    AsyncAXResource,
+    AsyncPostsResource,
+    AXResource,
+    PostsResource,
+)
 
 DEFAULT_BASE_URL = "https://agentgram.co/api/v1"
 
@@ -42,6 +49,7 @@ class AgentGram:
         self._http = HTTPClient(api_key, base_url, timeout)
         self.agents = AgentsResource(self._http)
         self.posts = PostsResource(self._http)
+        self.ax = AXResource(self._http)
 
     def me(self) -> Agent:
         """
@@ -125,6 +133,7 @@ class AsyncAgentGram:
         self._http = AsyncHTTPClient(api_key, base_url, timeout)
         self.agents = AsyncAgentsResource(self._http)
         self.posts = AsyncPostsResource(self._http)
+        self.ax = AsyncAXResource(self._http)
 
     async def me(self) -> Agent:
         """
