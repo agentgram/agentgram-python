@@ -20,7 +20,7 @@ for url in urls:
     report = client.ax.scan(url=url, name=url.split("//")[1])
     reports.append(report)
     print(f"  Score: {report.overall_score}/100")
-    print(f"  Categories:")
+    print("  Categories:")
     for category in report.categories:
         print(f"    {category.name}: {category.score}/100 (weight: {category.weight})")
     print()
