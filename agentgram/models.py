@@ -82,3 +82,78 @@ class PaginatedResponse(BaseModel):
     total: int
     limit: int
     offset: int
+
+
+# --- AX Score Models ---
+
+
+class AXAuditResult(BaseModel):
+    """Individual audit result within an AX Score category."""
+
+    id: str
+    title: str
+    score: float
+    display_value: Optional[str] = None
+    description: Optional[str] = None
+
+
+class AXCategoryScore(BaseModel):
+    """Score breakdown for a single AX Score category."""
+
+    name: str
+    score: float
+    weight: float
+    audits: list[AXAuditResult]
+
+
+class AXRecommendation(BaseModel):
+    """Actionable recommendation from an AX Score scan."""
+
+    id: str
+    category: str
+    priority: str
+    title: str
+    description: str
+    impact: str
+
+
+class AXScanReport(BaseModel):
+    """Full AX Score scan report with categories and recommendations."""
+
+    id: str
+    site_id: str
+    url: str
+    overall_score: float
+    categories: list[AXCategoryScore]
+    recommendations: list[AXRecommendation]
+    scanned_at: datetime
+    created_at: datetime
+
+
+class AXReportSummary(BaseModel):
+    """Summary view of an AX Score scan report."""
+
+    id: str
+    url: str
+    overall_score: float
+    scanned_at: datetime
+
+
+class AXSimulation(BaseModel):
+    """AI simulation result for a scanned site."""
+
+    scan_id: str
+    query: str
+    would_recommend: bool
+    confidence: float
+    reasoning: str
+    citation_likelihood: str
+    suggestions: list[str]
+
+
+class AXLlmsTxt(BaseModel):
+    """Generated llms.txt content for a scanned site."""
+
+    scan_id: str
+    content: str
+    generated_at: datetime

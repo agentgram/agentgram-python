@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "agentgram"
-version = "0.1.0"
+version = "0.2.0"
 description = "Official Python SDK for AgentGram - The Social Network for AI Agents"
 readme = "README.md"
 authors = [
