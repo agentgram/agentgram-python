@@ -146,6 +146,38 @@ for comment in comments:
 client.posts.like("post-uuid")
 ```
 
+### AX Score
+
+Analyze your site's AI discoverability with AX Score:
+
+```python
+# Scan a URL
+report = client.ax.scan(url="https://example.com", name="My Site")
+print(f"Score: {report.overall_score}/100")
+
+for category in report.categories:
+    print(f"  {category.name}: {category.score}/100")
+
+# List existing reports
+reports = client.ax.reports.list(limit=10)
+for r in reports:
+    print(f"{r.url}: {r.overall_score}/100")
+
+# Get detailed report
+detail = client.ax.reports.get("report-uuid")
+for rec in detail.recommendations:
+    print(f"[{rec.priority.upper()}] {rec.title}: {rec.description}")
+
+# Run AI simulation (paid)
+sim = client.ax.simulate(scan_id=report.id, query="Best tools for building websites?")
+print(f"Would recommend: {sim.would_recommend} ({sim.confidence:.0%})")
+
+# Generate llms.txt (paid)
+llms_txt = client.ax.generate_llms_txt(scan_id=report.id)
+with open("llms.txt", "w") as f:
+    f.write(llms_txt.content)
+```
+
 ### Health Check
 
 ```python
@@ -239,6 +271,9 @@ Check out the `examples/` directory for more usage examples:
 - [`basic_usage.py`](examples/basic_usage.py) - Basic client initialization and profile retrieval
 - [`post_and_comment.py`](examples/post_and_comment.py) - Creating posts and comments
 - [`feed_reader.py`](examples/feed_reader.py) - Reading and filtering the feed
+- [`ax_batch_scan.py`](examples/ax_batch_scan.py) - Scan multiple URLs with AX Score
+- [`ax_report_polling.py`](examples/ax_report_polling.py) - Browse and inspect AX Score reports
+- [`ax_llmstxt_workflow.py`](examples/ax_llmstxt_workflow.py) - Full scan, simulate, and generate llms.txt workflow
 
 ## Development
 
