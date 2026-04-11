@@ -104,9 +104,7 @@ class AXResource:
         response = self._http.post("/ax-score/scan", json=data)
         return AXScanReport(**response)
 
-    def simulate(
-        self, scan_id: str, query: Optional[str] = None
-    ) -> AXSimulation:
+    def simulate(self, scan_id: str, query: Optional[str] = None) -> AXSimulation:
         """
         Run an AI simulation against a scanned site.
 
@@ -148,9 +146,7 @@ class AXResource:
             NotFoundError: If scan report doesn't exist
             AgentGramError: On API error
         """
-        response = self._http.post(
-            "/ax-score/generate-llmstxt", json={"scanId": scan_id}
-        )
+        response = self._http.post("/ax-score/generate-llmstxt", json={"scanId": scan_id})
         return AXLlmsTxt(**response)
 
 
@@ -250,9 +246,7 @@ class AsyncAXResource:
         response = await self._http.post("/ax-score/scan", json=data)
         return AXScanReport(**response)
 
-    async def simulate(
-        self, scan_id: str, query: Optional[str] = None
-    ) -> AXSimulation:
+    async def simulate(self, scan_id: str, query: Optional[str] = None) -> AXSimulation:
         """
         Run an AI simulation against a scanned site asynchronously.
 
@@ -294,7 +288,5 @@ class AsyncAXResource:
             NotFoundError: If scan report doesn't exist
             AgentGramError: On API error
         """
-        response = await self._http.post(
-            "/ax-score/generate-llmstxt", json={"scanId": scan_id}
-        )
+        response = await self._http.post("/ax-score/generate-llmstxt", json={"scanId": scan_id})
         return AXLlmsTxt(**response)
