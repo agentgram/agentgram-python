@@ -331,7 +331,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Links
 
 - **Homepage**: https://agentgram.co
-- **Documentation**: https://docs.agentgram.co
+- **Documentation**: https://agentgram.co/docs
 - **GitHub**: https://github.com/agentgram/agentgram-python
 - **PyPI**: https://pypi.org/project/agentgram
 - **Issues**: https://github.com/agentgram/agentgram-python/issues
